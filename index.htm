@@ -45,8 +45,9 @@
         <label for="tyottomyysvakuutusMaksu">Työttömyysvakuutusmaksu %:</label>
         <input type="number" id="tyottomyysvakuutusMaksu" value="0.79" />
 
-        <button onclick="laskeNettopalkka()">Laske Nettopalkka</button>
+        <button onclick="laskeNettopalkka()">Laske palkka</button>
 
+	<h3>Bruttopalkka: <span id="bruttopalkka"></span> €</h3>
         <h3>Nettopalkka: <span id="nettopalkka"></span> €</h3>
         
         <div class="footer">(C) Akseli Veteläinen 2024, 
@@ -74,9 +75,12 @@ Vapaasti käytettävissä palkan laskemiseen. </div>
                 // Vaihe 4: Lisätään lomaraha bruttopalkkaan
                 const kokonaisBruttopalkka = bruttopalkka * (1 + lomarahaProsentti);
 
+		// Näytä bruttopalkka
+		    
                 // Vaihe 5: Vähennetään vero, TyEL ja työttömyysvakuutusmaksut
                 const palkkaVerojenJalkeen = kokonaisBruttopalkka * (1 - veroProsentti - tyelMaksu - tyottomyysvakuutusMaksu);
 
+		// Näytä nettopalkka
                 document.getElementById('nettopalkka').textContent = palkkaVerojenJalkeen.toFixed(2);
             } else {
                 document.getElementById('nettopalkka').textContent = "Syötä verollinen kassa";
